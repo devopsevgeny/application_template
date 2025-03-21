@@ -4,3 +4,6 @@
 
 # folders
 .vscode
+bin
+include
+lib
