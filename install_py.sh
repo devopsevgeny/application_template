@@ -34,10 +34,10 @@ if [[ ! -f /etc/os-release ]]; then
 else
     . /etc/os-release
     whichOS=$(echo "$ID_LIKE" | tr '[:upper:]' '[:lower:]')
-    echo "Detected OS: $whichOS
+    echo "Detected OS: $whichOS"
 fi
 
-"
+
 
 function install_debian(){
 	echo Installing pakages for $whichOS OS.
@@ -61,12 +61,16 @@ esac
 # Function to read user's input to create a new project.
 
 function create_project_dir(){
-    read -p "what is the name of your project" PROJECT_NAME
-    if [[ ! $WORK_DIR/$PROJECT_NAME ]]; then 
-        echo "$WORK_DIR/$PROJECT_NAME not exists"
+    read -p "What is the name of your project: " PROJECT_NAME
+    WORK_DIR="$HOME/projects/$PROJECT_NAME"
+
+    if [[ ! -d "$WORK_DIR" ]]; then 
+        echo "$WORK_DIR does not exist"
+        mkdir -p "$WORK_DIR"
     else
-         echo "$WORK_DIR/$PROJECT_NAME already exists"
+        echo "$WORK_DIR already exists"
     fi
 }
+
 
 create_project_dir
