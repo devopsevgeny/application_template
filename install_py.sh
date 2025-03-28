@@ -13,7 +13,6 @@ set -x
 
 WORK_DIR="$HOME/projects/$PROJECT_NAME"
 PROJECT_NAME=""
-# PACKAGES=("python3" "python3-pip" "pipx" "python3-venv"  "makeself" "sqlite3") 
 
 
 check_no_root() {
@@ -27,7 +26,7 @@ check_no_root() {
 }
 
 # Checking which OS
-# whichOS=$(cat /etc/os-release | grep "ID_LIKE=" | sed 's/ID_LIKE=//')
+
 if [[ ! -f /etc/os-release ]]; then
     echo "Error: /etc/os-release not found. Cannot detect operating system."
     exit 1
