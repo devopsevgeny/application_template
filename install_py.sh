@@ -9,8 +9,10 @@
 #                 you think that this script can be improved.
 set -o errexit 
 set -o pipefail 
-set -x 
+set -x
 
+read -p "what is the name of your project" PROJECT_NAME
+WORK_DIR="~/projects/$PROJECT_NAME"
 PACKAGES=("python3" "python3-pip" "pipx" "python3-venv"  "makeself" "sqlite3") 
 
 # Function to check for root privileges
