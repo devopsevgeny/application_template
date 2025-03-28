@@ -12,6 +12,7 @@ set -o pipefail
 set -x
 
 WORK_DIR="$HOME/projects/$PROJECT_NAME"
+PROJECT_NAME=""
 # PACKAGES=("python3" "python3-pip" "pipx" "python3-venv"  "makeself" "sqlite3") 
 
 
