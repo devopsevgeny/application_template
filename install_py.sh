@@ -11,7 +11,7 @@ set -o errexit
 set -o pipefail 
 set -x 
 
-PACKAGES =  ("python3" "python3-pip" "python3-pipx" "python3-venv"  "makeself" "sqlite3" ) 
+PACKAGES=("python3" "python3-pip" "python3-pipx" "python3-venv"  "makeself" "sqlite3") 
 
 # Function to check for root privileges
 check_no_root() {
@@ -31,13 +31,12 @@ echo "Detected OS: $whichOS"
 function install_debian(){
 	echo Installing pakages for $whichOS OS.
 	sudo apt update;sudo apt upgrade -y;sudo apt install -y "${PACKAGES[@]}"
-	;;
-
+}
 function install_rhel(){
-	sudo yum update -y;
-	sudo yum install -y epel-release || sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E '%{rhel}').noarch.rpm;
-	sudo yum update -y;
-	sudo yum install -y  "${PACKAGES[@]}"
+	sudo dnf update -y;
+	sudo dnf install -y epel-release || sudo dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E '%{rhel}').noarch.rpm;
+	sudo dnf update -y;
+	sudo dnf install -y  "${PACKAGES[@]}"
 	echo Installing pakages for $whichOS OS.
     
         
