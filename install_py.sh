@@ -11,7 +11,7 @@ set -o errexit
 set -o pipefail 
 set -x 
 
-PACKAGES=("python3" "python3-pip" "python3-pipx" "python3-venv"  "makeself" "sqlite3") 
+PACKAGES=("python3" "python3-pip" "pipx" "python3-venv"  "makeself" "sqlite3") 
 
 # Function to check for root privileges
 check_no_root() {
