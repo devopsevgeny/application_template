@@ -77,7 +77,15 @@ function create_project_dir(){
     fi
 }
 
-which virtual environment you want use? pipenv or venv.
+install_virtual_environment(){
+    cd $WORK_DIR
+    python3 -m pip install --user pipenv
+    grep -qxF 'export PATH="$HOME/.local/bin:$PATH"' ~/.bashrc || echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+    source ~/.bashrc
+    python3 -m venv $PROJECT_NAME
+    pipenv install flask flask-sqlalchemy flask-alchemyview bootstrap-flask quart db-sqlite3    
+}
 
-
+check_no_root
 create_project_dir
+install_virtual_environment
