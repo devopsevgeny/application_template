@@ -78,7 +78,15 @@ function create_project_dir(){
     fi
 }
 
-install_virtual_environment(){
+install_debian_virtual_environment(){
+    cd $WORK_DIR
+    grep -qxF 'export PATH="$HOME/.local/bin:$PATH"' ~/.bashrc || echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+    source ~/.bashrc
+    pipenv install flask flask-sqlalchemy bootstrap-flask quart
+
+}
+
+install_rhel_virtual_environment(){
     cd $WORK_DIR
     python3.9 -m pip install --user pipenv
     pipenv --python 3.9
@@ -88,6 +96,12 @@ install_virtual_environment(){
        
 }
 
+
+case $whichOS in
+    *debian*) install_debian_virtual_environment ;;
+    *fedora*) install_rhel_virtual_environment ;;
+    *) echo "$whichOS is not supported" && exit 1 ;;
+esac
+
 check_no_root
 create_project_dir
-install_virtual_environment
