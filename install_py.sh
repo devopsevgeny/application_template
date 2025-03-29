@@ -27,6 +27,7 @@ check_no_root() {
 
 # Checking which OS
 
+
 if [[ ! -f /etc/os-release ]]; then
     echo "Error: /etc/os-release not found. Cannot detect operating system."
     exit 1
