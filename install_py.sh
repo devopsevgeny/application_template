@@ -82,7 +82,7 @@ install_virtual_environment(){
     python3 -m pip install --user pipenv
     grep -qxF 'export PATH="$HOME/.local/bin:$PATH"' ~/.bashrc || echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
     source ~/.bashrc
-    python3 -m venv $PROJECT_NAME
+    pipenv shell
     pipenv install flask flask-sqlalchemy flask-alchemyview bootstrap-flask quart db-sqlite3    
 }
 
