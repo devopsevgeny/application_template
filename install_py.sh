@@ -96,12 +96,11 @@ install_rhel_virtual_environment(){
        
 }
 
+check_no_root
+create_project_dir
 
 case $whichOS in
     *debian*) install_debian_virtual_environment ;;
     *fedora*) install_rhel_virtual_environment ;;
     *) echo "$whichOS is not supported" && exit 1 ;;
 esac
-
-check_no_root
-create_project_dir
