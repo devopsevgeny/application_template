@@ -41,7 +41,7 @@ fi
 
 function install_debian(){
 	echo Installing pakages for $whichOS OS.
-	sudo apt update;sudo apt upgrade -y;sudo apt install -y python3 python3-pip pipx python3-venv makeself sqlite3
+	sudo apt update;sudo apt upgrade -y;sudo apt install -y python3 python3-pip pipx pipenv python3-venv makeself sqlite3
 }
 function install_rhel(){
 	sudo dnf update -y;
@@ -67,10 +67,17 @@ function create_project_dir(){
     if [[ ! -d "$WORK_DIR" ]]; then 
         echo "$WORK_DIR does not exist"
         mkdir -p "$WORK_DIR"
+        cd $WORK_DIR
+        git init
+        touch .gitignore README.md TASKS.md CONTRIBUTORS.md LICENSE.md
+        mkdir -p src/$PROJECT_NAME/{libs,static,templates}
+        
     else
         echo "$WORK_DIR already exists"
     fi
 }
+
+which virtual environment you want use? pipenv or venv.
 
 
 create_project_dir
