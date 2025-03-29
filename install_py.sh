@@ -47,7 +47,8 @@ function install_rhel(){
 	sudo dnf update -y;
 	sudo dnf install -y epel-release || sudo dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E '%{rhel}').noarch.rpm;
 	sudo dnf update -y;
-	sudo dnf install -y  python3 python3-pip python3-virtualenv makeself sqlite
+
+	sudo dnf install -y python39 python39-pip python39-devel
 	echo Installing pakages for $whichOS OS.     
     
 }
@@ -79,11 +80,12 @@ function create_project_dir(){
 
 install_virtual_environment(){
     cd $WORK_DIR
-    python3 -m pip install --user pipenv
+    python3.9 -m pip install --user pipenv
+    pipenv --python 3.9
     grep -qxF 'export PATH="$HOME/.local/bin:$PATH"' ~/.bashrc || echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
     source ~/.bashrc
-    pipenv shell
-    pipenv install flask flask-sqlalchemy flask-alchemyview bootstrap-flask quart db-sqlite3    
+    pipenv install flask flask-sqlalchemy bootstrap-flask quart
+       
 }
 
 check_no_root
