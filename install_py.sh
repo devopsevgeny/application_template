@@ -82,6 +82,8 @@ install_debian_virtual_environment(){
     cd $WORK_DIR
     grep -qxF 'export PATH="$HOME/.local/bin:$PATH"' ~/.bashrc || echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
     source ~/.bashrc
+    pwd
+    cd $WORK_DIR
     pipenv install flask flask-sqlalchemy bootstrap-flask quart
 
 }
@@ -95,7 +97,7 @@ install_rhel_virtual_environment(){
     pipenv install flask flask-sqlalchemy bootstrap-flask quart
        
 }
-
+function main(){
 check_no_root
 create_project_dir
 
@@ -104,3 +106,7 @@ case $whichOS in
     *fedora*) install_rhel_virtual_environment ;;
     *) echo "$whichOS is not supported" && exit 1 ;;
 esac
+}
+
+#################
+main
