@@ -17,7 +17,7 @@ PROJECT_NAME=""
 WORK_DIR=""
 LOG_FILE="/tmp/application_template_script_`date +"%Y%m%d-%H%M"`.log"
 
-check_no_root() {
+function check_no_root() {
     if [[ $EUID -eq 0 ]] || [[ $UID -eq 0 ]]; then
         echo "Error: Do not use root user or sudo to run this script"
         exit 1
@@ -31,7 +31,7 @@ check_no_root() {
     fi
 }
 
-detect_os() {
+function detect_os() {
     if [[ ! -f /etc/os-release ]]; then
         echo "Error: /etc/os-release not found. Cannot detect operating system."
         exit 1
@@ -187,5 +187,6 @@ main() {
 }
 
 #################
-main            #
+MAIN            #
 #################
+main    
