@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # -----------------------------------------------------
 # Script Name:    install_py.sh
-# Version:        1.25.0
+# Version:        1.25.6
 # Author:         Yaniv Mendiuk & Feigelman Evgeny
-# Date:           2025-03-31
-# Description:    This script will install most of needed packages, that you will use
-#                 during your daily work as a DevOps expert. Feel free to tell me if 
-#                 you think that this script can be improved.
+# Date:           2025-02-12
+# Description:    This script will install all prerequesites and create a forlders for
+#                 python application 
+#      
 set -o errexit 
 set -o pipefail
 set -x 
